@@ -18,5 +18,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/spells', 'SpellsListC@index')->name('spells');
-Route::get('/spell/{id}', 'SpellDetailC@index')->name('spell')->where('id', '[+]?[0-9]{1,10}');
+Route::get('/spells', 'SpellsController@spellList')->name('spells');
+Route::get('/spell/{id}', 'SpellsController@detail')->name('spell')->where('id', '[+]?[0-9]{1,11}');

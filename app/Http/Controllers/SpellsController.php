@@ -5,10 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Spell;
 
-class SpellsListController extends Controller
+class SpellsController extends Controller
 {
-    public function show()
+    public function spellList()
     {
         return view('spells', ['spells' => Spell::all()]);
+    }
+
+    public function detail($idSpell)
+    {
+        return view('spell', ['spell' => Spell::find($idSpell)]);
     }
 }
