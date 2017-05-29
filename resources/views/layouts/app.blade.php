@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     @yield('css')
+
 </head>
 <body>
 <div id="app">
@@ -83,5 +84,8 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/default.js') }}"></script>
 <script src="{{ asset('https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')}}"></script>
+
+@yield('scripts')
+
 </body>
 </html>

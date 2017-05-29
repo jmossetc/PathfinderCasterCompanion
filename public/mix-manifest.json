@@ -2,5 +2,7 @@
   "/js/app.js": "/js/app.js",
   "/css/app.css": "/css/app.css",
   "/js/default.js": "/js/default.js",
-  "/css/spells.css": "/css/spells.css"
+  "/css/spells.css": "/css/spells.css",
+  "/js/spells.js": "/js/spells.js",
+  "/js/search.js": "/js/search.js"
 }

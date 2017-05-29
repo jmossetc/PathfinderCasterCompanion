@@ -14,4 +14,10 @@ class Spell extends Model
     {
         return $this->belongsToMany('App\School','Ass_Spells_School','id_spell','id_school');
     }
+
+    //The classes of the spell
+    public function classes()
+    {
+        return $this->belongsToMany('App\Classe','Ass_Spells_Classes','id_spell','id_class');
+    }
 }

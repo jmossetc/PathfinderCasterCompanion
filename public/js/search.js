@@ -63,12 +63,12 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 43);
+/******/ 	return __webpack_require__(__webpack_require__.s = 44);
 /******/ })
 /************************************************************************/
 /******/ ({
 
-/***/ 10:
+/***/ 11:
 /***/ (function(module, exports) {
 
 /**
@@ -76,24 +76,27 @@
  */
 
 $(function () {
-  /**
-   * Link helper
-   * Use data-href to specify links on an html tag
-   * Made by Ron van der Heijden
-   * https://stackoverflow.com/questions/1460958/html-table-row-like-a-link
-   * */
-  $('tr[data-href]').on("click", function () {
-    document.location = $(this).data('href');
     console.log('test');
-  });
+    console.log($('#classes-sel').val());
+    showLevelIfClassSelected();
+
+    $('#classes-sel').on('change', function () {
+        showLevelIfClassSelected();
+    });
 });
+
+function showLevelIfClassSelected() {
+    if ($('#classes-sel').val() != '') {
+        $('#spell-level-sel').show();
+    }
+}
 
 /***/ }),
 
-/***/ 43:
+/***/ 44:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(10);
+module.exports = __webpack_require__(11);
 
 
 /***/ })
