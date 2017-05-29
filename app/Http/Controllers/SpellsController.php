@@ -9,10 +9,10 @@ class SpellsController extends Controller
 {
     public function spellList()
     {
-        return view('spells', ['spells' => Spell::all()]);
+        return view('spells', ['spells' => Spell::paginate(20)]);
     }
 
-    public function detail($idSpell)
+    public function details($idSpell)
     {
         return view('spell', ['spell' => Spell::find($idSpell)]);
     }
