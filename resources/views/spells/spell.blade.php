@@ -9,7 +9,7 @@
 
                     <div class="panel-body">
 
-                        Schoo
+                       <?php echo $spell->full_text ?>
 
                     </div>
                 </div>

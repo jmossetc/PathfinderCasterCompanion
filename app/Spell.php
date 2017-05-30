@@ -18,6 +18,6 @@ class Spell extends Model
     //The classes of the spell
     public function classes()
     {
-        return $this->belongsToMany('App\Classe','Ass_Spells_Classes','id_spell','id_class');
+        return $this->belongsToMany('App\Classe','Ass_Spells_Classes','id_spell','id_class')->withPivot('spell_lvl');
     }
 }

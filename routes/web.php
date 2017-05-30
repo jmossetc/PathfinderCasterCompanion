@@ -20,4 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/spells', 'SpellsController@all')->name('spells');
 Route::get('/spell/{id}', 'SpellsController@detail')->name('spell')->where('id', '[+]?[0-9]{1,11}');
-Route::post('/spells/search', 'SpellsController@search')->name('spellSearch');
+Route::post('/spells', 'SpellsController@search')->name('spellSearch');
+

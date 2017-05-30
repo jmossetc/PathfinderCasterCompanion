@@ -13,7 +13,7 @@ class SpellsController extends Controller
 {
     public function all()
     {
-        return view('spells', ['spells' => Spell::paginate(20), 'schools' => School::all(), 'classes' => Classe::all()]);
+        return view('spells.table', ['spells' => Spell::paginate(20), 'schools' => School::all(), 'classes' => Classe::all()]);
     }
 
     public function detail($idSpell)
@@ -23,7 +23,8 @@ class SpellsController extends Controller
 
     public function search(Request $request)
     {
-        var_dump($request->input('name'));
+
+
         $spells = Spell::where('deleted','0')
             ->when(!empty($request->input('school')), function($query) use ($request){
                 return $query->whereHas('schools', function($query)  use ($request)
@@ -39,15 +40,18 @@ class SpellsController extends Controller
             })
             ->when(!empty($request->input('name')), function($query) use ($request){
                 return $query->whereRaw("LOWER(name) LIKE ?",'%' .strtolower($request->input('name')) . '%');
+            })
+            ->when(!empty($request->input('level')), function($query) use ($request){
+                return $query->whereHas('classes', function($query)  use ($request)
+                {
+                    return $query->where('Ass_Spells_Classes.spell_lvl','=', $request->input('level'));
+                });
+
             });
 
 
-        /*$spells= Spell::whereHas('schools', function($query)  use ($request)
-            {
-                $query->where('Schools.id', $request->input('school'));
-            })->get();*/
 
-        return view('spells', ['spells' => $spells->get(), 'schools' => School::all(), 'classes' => Classe::all()]);
+        return view('spells.table', ['spells' => $spells->paginate(20), 'schools' => School::all(), 'classes' => Classe::all()]);
 
     }
 }
