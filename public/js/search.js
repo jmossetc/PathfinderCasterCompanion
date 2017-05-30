@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 44);
+/******/ 	return __webpack_require__(__webpack_require__.s = 45);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -77,28 +77,52 @@
 
 $(function () {
     showLevelIfClassSelected();
+
+    var delay = function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    }();
+
     $('#classes-sel').on('change', function () {
         showLevelIfClassSelected();
     });
 
-    $('.filter-input').on('change', function () {
-        $.ajax({
-            url: '/spells',
-            type: "post",
-            data: {
-                'name': $('#spell-search-text').val(),
-                'school': $('#schools-sel').val(),
-                'class': $('#classes-sel').val(),
-                'level': $('#spell-level-sel').val(),
-                '_token': $('input[name=_token]').val()
-            },
-            success: function success(data) {
-                //alert(data);
-                console.log('success!');
-            }
-        });
+    $('.filter-input-onchange').on('change', function () {
+        sendFilters();
+    });
+
+    //We se
+    $('#spell-search-text').keyup(function () {
+        delay(function () {
+            sendFilters();
+        }, 500);
     });
 });
+
+function sendFilters() {
+    var delay = 250;
+    $.ajax({
+        url: '/spells',
+        type: "post",
+        data: {
+            'name': $('#spell-search-text').val(),
+            'school': $('#schools-sel').val(),
+            'class': $('#classes-sel').val(),
+            'level': $('#spell-level-sel').val(),
+            '_token': $('input[name=_token]').val()
+        },
+        beforeSend: function beforeSend() {
+            $('#spinner-default').show();
+        },
+        success: function success(data) {
+            $('#spinner-default').hide();
+            $('#spell-table').fadeOut().html(data).fadeIn();
+        }
+    });
+}
 
 function showLevelIfClassSelected() {
     if ($('#classes-sel').val() != '') {
@@ -111,7 +135,7 @@ function showLevelIfClassSelected() {
 
 /***/ }),
 
-/***/ 44:
+/***/ 45:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(11);

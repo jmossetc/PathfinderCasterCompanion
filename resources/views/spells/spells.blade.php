@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('css')
     <link rel="stylesheet" href="{{asset('css/spells.css')}}">
 @endsection
@@ -11,24 +12,24 @@
 
                     <div class="panel-body">
 
-                        <form method="post" action="/spells" class="form-inline">
+                        <form  action="/spells" class="form-inline">
                             <div class="form-group">
 
-                                <select class="form-control filter-input" name="school" id="schools-sel">
+                                <select class="form-control filter-input filter-input-onchange" name="school" id="schools-sel">
                                     <option value="">Schools</option>
                                     @foreach($schools as $school)
                                         <option value="{{$school->id}}">{{$school->label}}</option>
                                     @endforeach
                                 </select>
 
-                                <select class="form-control filter-input" name="class" id="classes-sel">
+                                <select class="form-control filter-input filter-input-onchange" name="class" id="classes-sel">
                                     <option value="">Classes</option>
                                     @foreach($classes as $class)
                                         <option value="{{$class->id}}">{{$class->label}}</option>
                                     @endforeach
                                 </select>
 
-                                <select class="form-control filter-input" name="level" id="spell-level-sel">
+                                <select class="form-control filter-input filter-input-onchange" name="level" id="spell-level-sel">
                                     <option value="">Spell level</option>
                                     @for($i=1; $i <10; $i++)
                                         <option value="{{$i}}">{{$i}}</option>
@@ -39,11 +40,12 @@
 
                                 <input class="form-control filter-input" type="text" name="name" id="spell-search-text" placeholder="Search by spells or tags">
 
-                                <button type="submit" class="btn btn-default">Submit</button>
                             </div>
                         </form>
 
-                        @yield('table')
+                        <div id="spell-table">
+                            @include('spells.table')
+                        </div>
 
                     </div>
                 </div>

@@ -4,30 +4,54 @@
 
 $(function () {
     showLevelIfClassSelected();
+
+    var delay = (function () {
+        var timer = 0;
+        return function (callback, ms) {
+            clearTimeout(timer);
+            timer = setTimeout(callback, ms);
+        };
+    })();
+
     $('#classes-sel').on('change', function () {
         showLevelIfClassSelected();
 
-    })
-
-    $('.filter-input').on('change', function () {
-        $.ajax({
-            url: '/spells',
-            type: "post",
-            data: {
-                'name':$('#spell-search-text').val(),
-                'school': $('#schools-sel').val(),
-                'class': $('#classes-sel').val(),
-                'level': $('#spell-level-sel').val(),
-                '_token': $('input[name=_token]').val()
-            },
-            success: function (data) {
-                //alert(data);
-                console.log('success!');
-            }
-        });
     });
 
-})
+    $('.filter-input-onchange').on('change', function () {
+        sendFilters()
+    });
+
+    //We se
+    $('#spell-search-text').keyup(function () {
+        delay(function () {
+            sendFilters();
+        }, 500);
+    });
+
+});
+
+function sendFilters() {
+    var delay = 250;
+    $.ajax({
+        url: '/spells',
+        type: "post",
+        data: {
+            'name': $('#spell-search-text').val(),
+            'school': $('#schools-sel').val(),
+            'class': $('#classes-sel').val(),
+            'level': $('#spell-level-sel').val(),
+            '_token': $('input[name=_token]').val()
+        },
+        beforeSend: function () {
+            $('#spinner-default').show();
+        },
+        success: function (data) {
+            $('#spinner-default').hide();
+            $('#spell-table').fadeOut().html(data).fadeIn();
+        }
+    });
+}
 
 
 function showLevelIfClassSelected() {

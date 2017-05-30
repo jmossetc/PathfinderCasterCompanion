@@ -13,7 +13,7 @@ class SpellsController extends Controller
 {
     public function all()
     {
-        return view('spells.table', ['spells' => Spell::paginate(20), 'schools' => School::all(), 'classes' => Classe::all()]);
+        return view('spells.spells', ['spells' => Spell::paginate(20), 'schools' => School::all(), 'classes' => Classe::all()]);
     }
 
     public function detail($idSpell)

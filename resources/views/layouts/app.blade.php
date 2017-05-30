@@ -12,11 +12,20 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/default.css') }}" rel="stylesheet">
+
 
     @yield('css')
 
 </head>
 <body>
+<div class="spinner" id="spinner-default">
+    <div class="rect1"></div>
+    <div class="rect2"></div>
+    <div class="rect3"></div>
+    <div class="rect4"></div>
+    <div class="rect5"></div>
+</div>
 <div id="app">
     <nav class="navbar navbar-default navbar-static-top">
         <div class="container">
