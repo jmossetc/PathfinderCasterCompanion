@@ -10,12 +10,31 @@
     </tr>
 
     @foreach($spells as $spell)
-        <tr class="spell-row-link" data-href="{{ route('spell', $spell->id) }}">
-            <td>{{$spell->name}}</td>
-            <td>{{$spell->schools()->select('label')->where('is_elemental', 0)->get()->first()->label}}</td>
-            <td>{{$spell->spell_level}}</td>
-            <td>{{$spell->short_description}}</td>
-        </tr>
+
+            <tr id="table-spells-row">
+                <td class="spell-cell">
+                    <a class="spell-row-link" href="{{ route('spell', $spell->id) }}">
+                        {{$spell->name}}
+                    </a>
+                </td>
+
+                <td class="spell-cell">
+                    <a class="spell-row-link" href="{{ route('spell', $spell->id) }}">
+                    {{$spell->schools()->select('label')->where('is_elemental', 0)->get()->first()->label}}
+                    </a>
+                </td>
+                <td class="spell-cell">
+                    <a class="spell-row-link" href="{{ route('spell', $spell->id) }}">
+                    {{$spell->spell_level}}
+                    </a>
+                </td>
+                <td class="spell-cell">
+                    <a class="spell-row-link" href="{{ route('spell', $spell->id) }}">
+                    {{$spell->short_description}}
+                    </a>
+                </td>
+            </tr>
+
     @endforeach
 
 </table>

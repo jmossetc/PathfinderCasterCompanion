@@ -49,6 +49,7 @@ function sendFilters() {
         success: function (data) {
             $('#spinner-default').hide();
             $('#spell-table').fadeOut().html(data).fadeIn();
+            bindTableRowsClicks();
         }
     });
 }
@@ -62,4 +63,10 @@ function showLevelIfClassSelected() {
         $('#spell-level-sel').hide();
         $('#spell-level-sel').val('');
     }
+}
+
+function bindTableRowsClicks(){
+    $('tr[data-href]').on("click", function () {
+        document.location = $(this).data('href');
+    });
 }

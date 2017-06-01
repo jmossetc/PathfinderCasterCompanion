@@ -1,9 +1,29 @@
 $font-stack:    Helvetica, sans-serif;
 $primary-color: #333;
 
+
+/*Table links on table rows */
+td.spell-cell{
+  height:100%;
+  padding:0 !important;
+  margin:0;
+}
 .spell-row-link{
-  cursor:pointer;
+  display:block;
+  height:100%;
+  width:100%;
+  color:$primary-color;
+  padding:5px;
 }
 #spell-level-sel{
   display:none;
+}
+
+#table-spells-row{
+  height:100%;
+}
+
+a:hover, a:focus {
+  color: $primary-color;
+  text-decoration: none;
 }

@@ -18,7 +18,7 @@ class SpellsController extends Controller
 
     public function detail($idSpell)
     {
-        return view('spell', ['spell' => Spell::find($idSpell)]);
+        return view('spells.spell', ['spell' => Spell::find($idSpell)]);
     }
 
     public function search(Request $request)
