@@ -18,7 +18,19 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
 Route::get('/spells', 'SpellsController@all')->name('spells');
-Route::get('/spell/{id}', 'SpellsController@detail')->name('spell')->where('id', '[+]?[0-9]{1,11}');
 Route::post('/spells', 'SpellsController@search')->name('spellSearch');
+
+Route::get('/spell/{id}', 'SpellsController@detail')->name('spell')->where('id', '[+]?[0-9]{1,11}');
+
+Route::get('/characters', 'CharactersController@characters')->name('characters')->middleware('auth.basic');
+Route::get('/character/{id}', 'CharactersController@character')->name('character')->where('id', '[+]?[0-9]{1,11}')->middleware('auth.basic');
+
+
+
+Route::post('/createchar', 'CharactersController@save')->name('saveCharacter')->middleware('auth.basic');
+Route::get('/createchar', 'CharactersController@create')->name('createCharacter')->middleware('auth.basic');
+
 

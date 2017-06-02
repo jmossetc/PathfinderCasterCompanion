@@ -10,7 +10,7 @@ class School extends Model
 
     public function spells()
     {
-        return $this->belongsToMany('App\Spells','Ass_Spells_School','id_school','id_spell');
+        return $this->belongsToMany('App\Spell','Ass_Spells_School','id_school','id_spell');
     }
 
     public function classes()

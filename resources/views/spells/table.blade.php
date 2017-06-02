@@ -28,7 +28,7 @@
                     {{$spell->spell_level}}
                     </a>
                 </td>
-                <td class="spell-cell">
+                <td sclass="spell-cell">
                     <a class="spell-row-link" href="{{ route('spell', $spell->id) }}">
                     {{$spell->short_description}}
                     </a>
