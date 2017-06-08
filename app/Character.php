@@ -21,4 +21,10 @@ class Character extends Model
         return $this->belongsToMany('App\Classe','Ass_Characters_Classes','id_character','id_class')->withPivot('level');
     }
 
+    //The spellbooks of tje character
+    public function spellbooks()
+    {
+        return $this->hasMany('App\Spellbook','id_character');
+    }
+
 }

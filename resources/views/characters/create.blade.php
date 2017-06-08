@@ -21,12 +21,14 @@
                                     <option value="{{$school->id}}">{{$school->label}}</option>
                             @endforeach
                             </select>--}}
+
+
                             <div class="form-group">
                             <input class="form-control" type="text" name="name" id="spell-search-text"
-                                   placeholder="Name">
+                                   placeholder="Name" required>
 
                             <select class="form-control" name="class"
-                                    id="classes-sel">
+                                    id="classes-sel" required>
                                 <option value="">Classes</option>
                                 @foreach($classes as $class)
                                     <option value="{{$class->id}}">{{$class->label}}</option>
@@ -35,7 +37,7 @@
 
                             <label for="char-level-sel">Level</label>
                             <select class="form-control" name="level"
-                                    id="char-level-sel">
+                                    id="char-level-sel" required>
                                 @for($i=1; $i <21; $i++)
                                     <option value="{{$i}}">{{$i}}</option>
                                 @endfor
@@ -46,7 +48,7 @@
 
 
 
-                            <textarea class="form-control" name="description" placeholder="Description">
+                            <textarea class="form-control" name="description" placeholder="Description" required>
 
                             </textarea>
 

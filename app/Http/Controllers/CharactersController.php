@@ -10,13 +10,13 @@ use App\School;
 
 class CharactersController extends Controller
 {
-    public function characters()
+    public function userCharacters()
     {
 
         if (Auth::check()) {
             $user = Auth::user();
         } else {
-            return view('welcome');
+            return view('auth.login');
         }
         $characters = $user->characters;
 
@@ -26,12 +26,16 @@ class CharactersController extends Controller
     public function character(Request $request)
     {
 
-
+        if (Auth::check()) {
+            $user = Auth::user();
+        } else {
+            return view('auth.login');
+        }
 
         $isUserChar = 0;
         $character = Character::find($request->id);
-        $user = Auth::user();
 
+        //Verifying if this is the user character
         foreach ($user->characters as $characterItered) {
             if ($characterItered->id == $request->id){
                 $isUserChar = 1;
@@ -51,25 +55,36 @@ class CharactersController extends Controller
 
 
     public function create(){
-        return view('characters.create', ['schools' => School::all(), 'classes' => Classe::all()]);
+
+        if (Auth::check()) {
+            return view('characters.create', ['schools' => School::all(), 'classes' => Classe::all()]);
+        } else {
+            return view('auth.login');
+        }
     }
+
+
     public function save(Request $request){
+        if (Auth::check()) {
+            $character = new Character;
+            $character->name = $request->name;
+            $character->description = $request->description;
+            $character->id_user = Auth::id();
+            $character->level = $request->level;
 
 
-        $character = new Character;
-        $character->name = $request->name;
-        $character->description = $request->description;
-        $character->id_user = Auth::id();
-        $character->level = $request->level;
+
+            $character->save();
+
+            $character->classes()->attach($request->class, ['level' => $request->level]);
 
 
+            return redirect()->route("character", $character->id)->with('message','Character created');
+        } else {
+            return view('auth.login');
+        }
 
-        $character->save();
 
-        $character->classes()->attach($request->class, ['level' => $request->level]);
-
-
-        return redirect()->route("character", $character->id)->with('message','Character created');
     }
 
 }
