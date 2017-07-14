@@ -1,7 +1,7 @@
 PathfinderCasterCompanion
 
 
-Project that aims to help players of the roleplaying game Pathfinder  with spellcasting. It uses this database as a source for spells : http://www.d20pfsrd.com/magic/tools/spells-db/.
+Project that aims to help players of the roleplaying game Pathfinder  with spellcasting. The goal was also for me to be more familiar with the Laravel framework. This project is still in it's early stage. It uses this database as a source for spells : http://www.d20pfsrd.com/magic/tools/spells-db/.
 
 I have modified it to extract some columns into tables to improve this database. To install the database use the database.sql script. I will eventually create a script to update the database as new spells are published.
 
