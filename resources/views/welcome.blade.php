@@ -79,11 +79,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    PathfinderCasterCompanion, <i>Beta</i>
+                    PathfinderCasterCompanion, <i>Alpha</i>
                 </div>
 
                 <p>
-                    A website that allows Pathfinder players to create characters and manage their spells. Try it now and get a full access for one year!
+                    A website that allows Pathfinder players to create characters and manage their spells.
                 </p>
             </div>
         </div>
