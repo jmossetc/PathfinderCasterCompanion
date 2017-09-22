@@ -47,7 +47,14 @@ class SpellsController extends Controller
                     return $query->where('Ass_Spells_Classes.spell_lvl','=', $request->input('level'));
                 });
 
+            })
+            ->when(!empty($request->input('castingTime')), function($query) use ($request){
+                var_dump(strtolower($request->input('castingTime')));
+                return $query->whereRaw("LOWER(casting_time) LIKE ?",'%' . strtolower($request->input('castingTime')) . '%');
+
             });
+        var_dump($request->input());
+        var_dump($spells->toSql());
 
 
 

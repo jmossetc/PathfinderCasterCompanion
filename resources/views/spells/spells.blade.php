@@ -36,6 +36,20 @@
                                     @endfor
                                 </select>
 
+
+                                <select class="form-control filter-input filter-input-onchange" name="castingTime" id="casting-time-sel">
+                                    <option value="">Casting time</option>
+                                    <option value="immediate">Immediate</option>
+                                    <option value="swift">Swift</option>
+                                    <option value="standard">Standard</option>
+                                    <option value="full round">Full round</option>
+                                    <option value="round">In rounds</option>
+                                    <option value="minute">In minutes</option>
+                                    <option value="hour">In hours</option>
+                                    <option value="day">In days</option>
+                                    <option value="week">In weeks</option>
+                                </select>
+
                                 <input class='filter-input' type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <input class="form-control filter-input" type="text" name="name" id="spell-search-text" placeholder="Search by spells or tags">
