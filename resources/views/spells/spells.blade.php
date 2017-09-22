@@ -50,6 +50,25 @@
                                     <option value="week">In weeks</option>
                                 </select>
 
+                                <div id="component-sub-form" class="form-group">
+                                    Components
+                                    <select class="form-control filter-input filter-input-onchange" name="verbalComponent" id="verbal-sel">
+                                        <option value="">Verbal</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <select class="form-control filter-input filter-input-onchange" name="somaticComponent" id="somatic-sel">
+                                        <option value="">Somatic</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                    <select class="form-control filter-input filter-input-onchange" name="materialComponent" id="material-sel">
+                                        <option value="">Material</option>
+                                        <option value="1">Yes</option>
+                                        <option value="0">No</option>
+                                    </select>
+                                </div>
+
                                 <input class='filter-input' type="hidden" name="_token" value="{{ csrf_token() }}">
 
                                 <input class="form-control filter-input" type="text" name="name" id="spell-search-text" placeholder="Search by spells or tags">

@@ -112,6 +112,9 @@ function sendFilters() {
             'school': $('#schools-sel').val(),
             'class': $('#classes-sel').val(),
             'level': $('#spell-level-sel').val(),
+            'verbalComponent': $('#verbal-sel').val(),
+            'somaticComponent': $('#somatic-sel').val(),
+            'materialComponent': $('#material-sel').val(),
             'castingTime': $('#casting-time-sel').val(),
             '_token': $('input[name=_token]').val()
         },

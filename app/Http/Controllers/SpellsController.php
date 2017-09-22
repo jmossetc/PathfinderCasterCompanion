@@ -41,6 +41,17 @@ class SpellsController extends Controller
             ->when(!empty($request->input('name')), function($query) use ($request){
                 return $query->whereRaw("LOWER(name) LIKE ?",'%' .strtolower($request->input('name')) . '%');
             })
+            ->when($request->input('verbalComponent') != null, function($query) use ($request){
+                return $query->where("verbal", $request->input('verbalComponent'));
+            })
+            ->when($request->input('somaticComponent') != null, function($query) use ($request){
+                return $query->where("somatic", $request->input('somaticComponent'));
+
+
+            })
+            ->when($request->input('materialComponent') != null, function($query) use ($request){
+                return $query->where("material", $request->input('materialComponent'));
+            })
             ->when(!empty($request->input('level')), function($query) use ($request){
                 return $query->whereHas('classes', function($query)  use ($request)
                 {
@@ -49,12 +60,12 @@ class SpellsController extends Controller
 
             })
             ->when(!empty($request->input('castingTime')), function($query) use ($request){
-                var_dump(strtolower($request->input('castingTime')));
+
                 return $query->whereRaw("LOWER(casting_time) LIKE ?",'%' . strtolower($request->input('castingTime')) . '%');
 
             });
-        var_dump($request->input());
-        var_dump($spells->toSql());
+        /*var_dump($request->input());
+        var_dump($spells->toSQL());*/
 
 
 
