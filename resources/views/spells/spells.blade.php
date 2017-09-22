@@ -15,6 +15,8 @@
                         <form  action="/spells" class="form-inline">
                             <div class="form-group">
 
+                                <input class="form-control filter-input" type="text" name="name" id="spell-search-text" placeholder="Search by spells or tags">
+
                                 <select class="form-control filter-input filter-input-onchange" name="school" id="schools-sel">
                                     <option value="">Schools</option>
                                     @foreach($schools as $school)
@@ -70,9 +72,6 @@
                                 </div>
 
                                 <input class='filter-input' type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                <input class="form-control filter-input" type="text" name="name" id="spell-search-text" placeholder="Search by spells or tags">
-
                             </div>
                         </form>
 

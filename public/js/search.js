@@ -100,6 +100,16 @@ $(function () {
             sendFilters();
         }, 500);
     });
+    $('body').on('click', '.pagination a', function (e) {
+        e.preventDefault();
+
+        var url = $(this).attr('href');
+        console.log(url);
+        getPage(url);
+        window.history.pushState("", "", url);
+
+
+    });
 });
 
 function sendFilters() {
@@ -129,7 +139,19 @@ function sendFilters() {
     });
 }
 
-function showLevelIfClassSelected() {
+    function getPage(url){
+        $.ajax({
+            url : url,
+            type:"get"
+        }).done(function (data) {
+            $('#spells-container').html(data);
+
+        }).fail(function () {
+            alert('Spells could not be loaded.');
+        });
+    }
+
+        function showLevelIfClassSelected() {
     if ($('#classes-sel').val() != '') {
         $('#spell-level-sel').show();
     } else {
