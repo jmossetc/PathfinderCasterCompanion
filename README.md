@@ -5,7 +5,9 @@ Project that aims to help players of the roleplaying game Pathfinder  with spell
 
 I have modified it to extract some columns into tables to improve this database. To install the database use the database.sql script. I will eventually create a script to update the database as new spells are published.
 
-To run this website locally I use the laravel/homestead vagrant box. See https://laravel.com/docs/5.4/homestead for more informations. The site's url is castercompanion.app. Don't forget to add it with the appropriate ip on your hosts file.  
+To run this website locally I use the laravel/homestead vagrant box. See https://laravel.com/docs/5.4/homestead for more informations. It is an Nginx server. The site's url is castercompanion.app. Don't forget to add it with the appropriate ip(probably 192.168.10.10 with homestead) on your hosts file.  
+
+You should also generate a .env file or ask me one. 
 
 Homestead.yaml example :
 
